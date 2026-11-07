@@ -1,0 +1,1922 @@
+/* ==================================================
+   共通設定: personal-color.html / makeup-color.html
+   デザイントークン、リセット、基本要素
+   ================================================== */
+:root {
+    --paper: #fffdfa;
+    --ivory: #f7f2ec;
+    --ink: #302d29;
+    --muted: #77716a;
+    --rose: #b97b6d;
+    --line: #ddd3c9;
+    --serif: "Libre Baskerville", serif;
+    --jp: "Noto Sans JP", sans-serif
+}
+
+
+* {
+    box-sizing: border-box
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+main section[id] {
+    scroll-margin-top: 74px;
+}
+
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--jp);
+    font-weight: 300;
+    line-height: 1.9
+}
+
+img {
+    width: 100%;
+    display: block;
+    object-fit: cover
+}
+
+a {
+    text-decoration: none;
+    color: inherit
+}
+
+/* 全HTML共通: h2のサイズと余白 */
+h2 {
+    font-size: 1.2rem !important;
+    margin-top: 0 !important;
+    margin-bottom: 1.2rem !important;
+}
+
+button {
+    font: inherit
+}
+
+/* ==================================================
+   共通設定: header / ブランド / ナビゲーション / CTA
+   personal-color.html / makeup-color.html
+   ================================================== */
+.site-header {
+    height: 74px;
+    padding: 0 5.5vw;
+    display: flex;
+    align-items: center;
+    gap: 2.2rem;
+    background: rgba(255, 253, 250, .94);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    border-bottom: 1px solid rgba(222, 215, 207, .5);
+    backdrop-filter: blur(12px)
+}
+
+.brand {
+    margin-right: auto;
+    line-height: 1.15;
+}
+
+.brand strong {
+    display: block;
+    font: 400 1.12rem var(--serif);
+    letter-spacing: .03em;
+}
+
+.brand small {
+    font-size: .48rem;
+    letter-spacing: .2em;
+    margin-top: 0;
+}
+
+.site-header nav {
+    display: flex;
+    gap: 1.8rem;
+    font-size: .7rem;
+}
+
+/* 3ページ共通: ヘッダーナビの下線アニメーション */
+.site-header nav a {
+    position: relative;
+}
+
+.site-header nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 100%;
+    bottom: -5px;
+    height: 1px;
+    background: var(--rose);
+    transition: right .25s ease;
+}
+
+.site-header nav a.is-underline-visible::after {
+    right: 0;
+}
+
+.menu-button {
+    display: none;
+    position: relative;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--rose);
+    cursor: pointer;
+}
+
+.menu-button span {
+    position: absolute;
+    left: 50%;
+    width: 21px;
+    height: 2px;
+    border-radius: 999px;
+    background: currentColor;
+    transform: translateX(-50%);
+    transition: top .25s ease, transform .25s ease, opacity .2s ease;
+}
+
+.menu-button span:nth-child(1) {
+    top: 12px;
+}
+
+.menu-button span:nth-child(2) {
+    top: 18px;
+}
+
+.menu-button span:nth-child(3) {
+    top: 24px;
+}
+
+.menu-button[aria-expanded="true"] span:nth-child(1) {
+    top: 18px;
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.menu-button[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-button[aria-expanded="true"] span:nth-child(3) {
+    top: 18px;
+    transform: translateX(-50%) rotate(-45deg);
+}
+
+.site-header.menu-open .brand {
+    position: relative;
+    z-index: 30;
+}
+
+.cta {
+    border: 0;
+    background: var(--rose);
+    color: #fff;
+    padding: .75rem 1.25rem;
+    border-radius: 99px;
+    font-size: .7rem;
+    cursor: pointer;
+    letter-spacing: .06em;
+    transition: .25s;
+}
+
+.cta:hover {
+    background: #9e665b;
+    transform: translateY(-2px);
+}
+
+.cta span {
+    margin-left: 1rem;
+}
+
+.crumb {
+    padding: 2px 7vw;
+    font-size: 9px;
+    color: white;
+    background: var(--rose);
+}
+
+/* ==================================================
+   共通設定: ヒーロー / 導入 / 汎用セクション
+   personal-color.html / makeup-color.html
+   ================================================== */
+.hero {
+    min-height: 510px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 44% 56%;
+    background: var(--ivory);
+    overflow: hidden;
+}
+
+.hero-copy {
+    padding: 56px 5vw 48px 9vw;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 2;
+}
+
+.eyebrow {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: .5rem !important;
+    letter-spacing: .16em;
+    color: var(--rose);
+    margin: 0 0 0.5rem;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    font: 400 26px/1.55 var(--serif);
+    letter-spacing: .03em;
+    margin: 0 0 1.3rem;
+}
+
+.hero-copy>p:not(.eyebrow, .price) {
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+.price {
+    font: 400 20px var(--serif);
+    margin: 14px 0 25px;
+}
+
+.price small {
+    font: 300 12px var(--jp);
+    color: var(--muted);
+}
+
+.hero-media {
+    min-width: 0;
+}
+
+.hero-media img {
+    height: 100%;
+    min-height: 510px;
+}
+
+.intro {
+    text-align: center;
+    padding: 75px 20px;
+    background: url(../img/main-landscape.png);
+    background-size: cover;
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+}
+
+.intro:before {
+    content: "";
+    position: absolute;
+    inset: 0 62% 0 0;
+    background: radial-gradient(ellipse at left, #d8caba55, transparent 60%);
+}
+
+.intro h2,
+.section-title {
+    font: 400 clamp(1.6rem, 2.5vw, 2.7rem)/1.55 var(--serif);
+    letter-spacing: .05em;
+}
+
+.intro p {
+    font-size: 0.8rem;
+    color: var(--muted);
+    position: relative;
+}
+
+.section {
+    padding: 85px 7vw;
+}
+
+.section.soft {
+    background: var(--ivory);
+}
+
+/* ダイアログの表示設定 */
+dialog {
+    box-sizing: border-box;
+    border: 0;
+    padding: 3.5rem;
+    width: min(560px, 90vw);
+    max-height: none;
+    overflow: visible;
+    background: var(--paper);
+    box-shadow: 0 20px 80px #443c3555;
+}
+
+dialog::backdrop {
+    background: #312a26aa;
+    backdrop-filter: blur(4px);
+}
+
+dialog h2 {
+    font: 400 2rem var(--serif);
+}
+
+dialog form {
+    display: grid;
+    gap: 1rem;
+}
+
+dialog [hidden] {
+    display: none !important;
+}
+
+dialog.is-success > .eyebrow,
+dialog.is-success > h2 {
+    display: none;
+}
+
+dialog label {
+    font-size: .78rem;
+}
+
+dialog input,
+dialog select {
+    display: block;
+    width: 100%;
+    margin-top: .4rem;
+    border: 1px solid var(--line);
+    padding: .8rem;
+    background: white;
+}
+
+.close {
+    position: absolute;
+    right: 1.2rem;
+    top: 1rem;
+    border: 0;
+    background: 0;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.form-success {
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.form-success::before {
+    content: "✓";
+    display: grid;
+    place-items: center;
+    width: 54px;
+    height: 54px;
+    margin: 0 auto 1.5rem;
+    border: 1px solid var(--rose);
+    border-radius: 50%;
+    color: var(--rose);
+    font-family: var(--sans);
+    font-size: 1.45rem;
+    font-weight: 300;
+    line-height: 1;
+}
+
+
+/* ==================================================
+   personal-color.html 専用設定
+   診断理由、4シーズン、補助コンテンツ
+   ================================================== */
+.heading-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 40px;
+}
+
+.heading-row h2 {
+    margin: 6px 0 0;
+}
+
+.heading-row>p {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+/* 共通アニメーション: personalのsplit ↔ makeupのlesson */
+.personal-color-page .split,
+.makeup-color-page .lesson {
+    display: grid;
+    grid-template-columns: minmax(0, 100%) minmax(0, 0);
+    overflow: hidden;
+    transition: grid-template-columns 1.6s ease;
+}
+
+.personal-color-page .split,
+.personal-color-page .about,
+.makeup-color-page .lesson,
+.makeup-color-page .receive {
+    container-type: inline-size;
+}
+
+.personal-color-page .split.is-expanded,
+.makeup-color-page .lesson.is-expanded {
+    grid-template-columns: minmax(0, 50%) minmax(0, 50%);
+}
+
+.personal-color-page .split>img,
+.makeup-color-page .lesson>img {
+    height: 100%;
+    min-width: 0;
+    order: 2;
+}
+
+.personal-color-page .split>img {
+    min-height: 560px;
+}
+
+.personal-color-page .split-copy {
+    padding: 75px 8vw;
+    background: var(--ivory);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    min-width: 0;
+    opacity: 1;
+    overflow: hidden;
+    pointer-events: auto;
+    transform: none;
+    order: 1;
+}
+
+.personal-color-page .split-copy p:not(.eyebrow) {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* Keep all copy at the final 50% column width while the grid expands. */
+.personal-color-page .split-copy > * {
+    width: calc(50cqw - 16vw);
+    max-width: 100%;
+}
+
+.personal-color-page .split.is-expanded .split-copy {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+}
+
+.reasons {
+    list-style: none;
+    padding: 0;
+}
+
+.reasons li {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 12px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 12px;
+}
+
+.reasons b {
+    font: 400 1.35rem var(--serif);
+    color: var(--rose);
+}
+
+.personal-color-page .reasons small {
+    color: var(--muted);
+}
+
+.seasons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.season-photo {
+    aspect-ratio: 1.5;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.season-photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--drape-image);
+    background-position: center;
+    background-size: cover;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+
+.spring {
+    background-image: url('../img/season-spring.png');
+    --drape-image: url('../img/season-spring-drape.png');
+}
+
+.summer {
+    background-image: url('../img/season-summer.png');
+    --drape-image: url('../img/season-summer-drape.png');
+}
+
+.autumn {
+    background-image: url('../img/season-autumn.png');
+    --drape-image: url('../img/season-autumn-drape.png');
+}
+
+.winter {
+    background-image: url('../img/season-winter.png');
+    --drape-image: url('../img/season-winter-drape.png');
+}
+
+@media (hover: hover) {
+    .seasons article:hover .season-photo::after {
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .season-photo::after {
+        transition: none;
+    }
+}
+
+.seasons h3 {
+    font: 400 20px var(--serif);
+    color: var(--rose);
+    margin: 12px 0 0;
+    text-align: center;
+}
+
+.seasons p {
+    font-size: 10px;
+    color: var(--muted);
+    text-align: center;
+}
+
+/* ==================================================
+   共通設定: 来店前案内 / FAQ / クロージング / footer
+   personal-color.html / makeup-color.html
+   ================================================== */
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9vw;
+    background: var(--ivory);
+}
+
+.check-list {
+    padding: 0;
+    list-style: none;
+}
+
+.check-list li {
+    padding: 8px 0;
+    font-size: 12px;
+}
+
+.check-list li:before {
+    content: "✓";
+    color: var(--rose);
+    border: 1px solid var(--rose);
+    border-radius: 50%;
+    padding: 0 4px;
+    margin-right: 12px;
+}
+
+.faq details {
+    border-bottom: 1px solid var(--line);
+    padding: 12px 0;
+    font-size: 12px;
+}
+
+.faq summary {
+    cursor: pointer;
+    list-style: none;
+}
+
+.faq summary:after {
+    content: "+";
+    float: right;
+}
+
+.closing {
+    text-align: center;
+    padding: 65px 20px;
+    background: var(--ivory);
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 6vw;
+    gap: 1.5rem;
+    font-size: .65rem;
+}
+
+/* ==================================================
+   personal-color.html 専用設定
+   ABOUT以降の固有セクションと演出
+   ================================================== */
+/* 共通アニメーション: personalのabout ↔ makeupのreceive */
+.about,
+.makeup-color-page .receive {
+    display: grid;
+    grid-template-columns: minmax(0, 0) minmax(0, 100%);
+    min-height: 500px;
+    overflow: hidden;
+    transition: grid-template-columns 1.6s ease;
+}
+
+.about.is-expanded,
+.makeup-color-page .receive.is-expanded {
+    grid-template-columns: minmax(0, 50%) minmax(0, 50%);
+}
+
+.about img,
+.makeup-color-page .receive>img {
+    height: 100%;
+    min-width: 0;
+    object-fit: cover;
+    object-position: right top;
+}
+
+.about-copy,
+.makeup-color-page .receive-copy {
+    padding: 70px 9vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    min-width: 0;
+    opacity: 1;
+    overflow: hidden;
+    pointer-events: auto;
+    transform: none;
+}
+
+.personal-color-page .about-copy p:not(.eyebrow) {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.personal-color-page .about-copy > * {
+    width: calc(50cqw - 18vw);
+    max-width: 100%;
+}
+
+.about.is-expanded .about-copy,
+.makeup-color-page .receive.is-expanded .receive-copy {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+}
+
+/* 共通スクロール表示アニメーション: .reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: .8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* ==================================================
+   共通設定: 見出し間隔 / クロージング
+   personal-color.html / makeup-color.html
+   ================================================== */
+.eyebrow+h2 {
+    margin: .2rem 0 1.2rem;
+}
+
+.closing h2 {
+    font: 400 clamp(1.6rem, 2.5vw, 2.7rem)/1.55 var(--serif);
+    margin: .2rem 0 .6rem;
+    letter-spacing: .04em;
+}
+
+.closing p:not(.eyebrow) {
+    margin: 1em 0;
+    font-family: var(--jp);
+    font-weight: 300;
+    font-size: .7rem;
+    line-height: 1.9;
+}
+
+.closing .cta {
+    margin-top: 1rem;
+}
+
+/* ==================================================
+   makeup-color.html 専用設定
+   メイク理論、質感グリッド、レッスン、お渡しするもの
+   ================================================== */
+.makeup-color-page .texture {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.makeup-color-page .texture>img {
+    height: 100%;
+    max-height: 350px;
+}
+
+.makeup-color-page .texture-copy {
+    padding: 20px 5vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: #fbf8f4;
+}
+
+.makeup-color-page .texture-copy p:not(.eyebrow) {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.makeup-color-page .texture-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: clamp(24px, 5vw, 80px);
+    padding: 60px 6vw 70px;
+    background: #fbf8f4;
+}
+
+.makeup-color-page .texture-grid article {
+    min-width: 0;
+    text-align: center;
+}
+
+.makeup-color-page .texture-grid img {
+    width: 112px;
+    height: 60px;
+    margin: 4px auto 13px;
+    object-fit: contain;
+    transition: transform .3s ease;
+}
+
+@media (hover: hover) {
+    .makeup-color-page .texture-grid img:hover {
+        transform: translateY(-8px);
+    }
+}
+
+.makeup-color-page .texture-grid h3 {
+    margin: 0 0 1rem;
+    font: 400 14px/1.4 var(--serif);
+    color: var(--rose);
+    letter-spacing: .04em;
+}
+
+.makeup-color-page .texture-grid p {
+    margin: 0;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1.85;
+    color: var(--muted);
+}
+
+.makeup-color-page .lesson {
+    background: var(--ivory);
+}
+
+.makeup-color-page .lesson-copy {
+    padding: 70px 8vw;
+}
+
+.makeup-color-page .lesson-copy p:not(.eyebrow) {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.makeup-color-page .lesson-copy > * {
+    width: calc(50cqw - 16vw);
+    max-width: 100%;
+}
+
+.makeup-color-page .lesson img {
+    height: 100%;
+    min-height: 470px;
+}
+
+.makeup-color-page .receive {
+    min-height: 470px;
+    background: var(--ivory);
+}
+
+.makeup-color-page .receive-copy {
+    padding: 65px 7vw;
+    background: #fbf8f4;
+}
+
+.makeup-color-page .receive-copy p:not(.eyebrow) {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.makeup-color-page .receive-copy > * {
+    width: calc(50cqw - 14vw);
+    max-width: 100%;
+}
+
+.makeup-color-page .receive img {
+    height: 100%;
+    min-height: 470px;
+    object-position: center top;
+}
+
+.makeup-color-page .checks {
+    padding: 0;
+    list-style: none;
+}
+
+.makeup-color-page .checks li {
+    padding: 7px 0;
+    font-size: 11px;
+}
+
+.makeup-color-page .checks li::before {
+    content: "✓";
+    color: var(--rose);
+    border: 1px solid var(--rose);
+    border-radius: 50%;
+    padding: 0 4px;
+    margin-right: 10px;
+}
+
+/* ==================================================
+   total-styling.html 固有設定
+   スタイルレシピ、スタイリングボード、効果、個別相談
+   header / footer / hero / CTA / closing / dialog は共通設定を使用
+   ================================================== */
+.total-styling-page .hero-media {
+    margin: 0;
+    position: relative;
+}
+
+.total-styling-page .hero-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(247, 242, 236, .25), transparent 25%);
+    pointer-events: none;
+}
+
+.total-styling-page .hero-copy>p:not(.eyebrow, .price) {
+    max-width: 540px;
+}
+
+.total-styling-page .hero .cta,
+.total-styling-page .consultation .cta {
+    align-self: flex-start;
+}
+
+.total-styling-page .recipe {
+    padding: 60px 4.2vw 70px;
+    background: #fbf8f4;
+}
+
+.total-styling-page .section-heading.centered {
+    max-width: 750px;
+    margin: 0 auto 18px;
+    text-align: center;
+}
+
+.total-styling-page .section-heading h2 {
+    margin: .05rem 0 .2rem;
+    font: 400 clamp(2rem, 3vw, 3.1rem)/1.25 var(--serif);
+    letter-spacing: .05em;
+}
+
+.total-styling-page .section-heading p:last-child {
+    margin: 0;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.total-styling-page .recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 34px;
+}
+
+.total-styling-page .recipe-grid article {
+    min-width: 0;
+    text-align: center;
+}
+
+.total-styling-page .recipe-grid h3 {
+    margin: 10px 0 4px;
+    font: 400 14px/1.3 var(--serif);
+    letter-spacing: .09em;
+    color: var(--rose);
+}
+
+.total-styling-page .recipe-grid p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.65;
+}
+
+.total-styling-page .recipe-image {
+    position: relative;
+    aspect-ratio: 1.5;
+    margin: 0;
+    overflow: hidden;
+}
+
+.total-styling-page .recipe-image img {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    max-width: none;
+    object-fit: cover;
+}
+
+.total-styling-page .recipe-color img {
+    left: 0;
+    top: 0;
+}
+
+.total-styling-page .recipe-silhouette img {
+    left: -100%;
+    top: 0;
+}
+
+.total-styling-page .recipe-face img {
+    left: 0;
+    top: -100%;
+}
+
+.total-styling-page .recipe-texture img {
+    left: -100%;
+    top: -100%;
+}
+
+.total-styling-page .recipe-conclusion {
+    position: relative;
+    width: 72%;
+    margin: 18px auto 0;
+    padding-top: 34px;
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-align: center;
+}
+
+.total-styling-page .recipe-conclusion::before,
+.finish-note::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 9px;
+    background:
+        linear-gradient(var(--line), var(--line)) left 8px / 100% 1px no-repeat,
+        linear-gradient(var(--line), var(--line)) left top / 1px 9px no-repeat,
+        linear-gradient(var(--line), var(--line)) right top / 1px 9px no-repeat;
+}
+
+.total-styling-page .recipe-conclusion::after,
+.finish-note::after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    width: 7px;
+    height: 18px;
+    background: var(--line);
+    clip-path: polygon(43% 0, 57% 0, 57% 67%, 100% 67%, 50% 100%, 0 67%, 43% 67%);
+    transform: translateX(-50%);
+}
+
+.total-styling-page .recipe-conclusion p {
+    margin: 0;
+}
+
+.total-styling-page .boards {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    padding-bottom: 76px;
+    background: var(--ivory);
+}
+
+.total-styling-page .boards-copy {
+    padding: 24px 4vw 24px 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.total-styling-page .boards-copy h2 {
+    margin: .3rem 0 1.2rem;
+    font: 400 clamp(1.8rem, 2.8vw, 3rem)/1.55 var(--serif);
+}
+
+.total-styling-page .boards-copy p:last-child {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.total-styling-page .board-visual img {
+    height: auto;
+}
+
+.total-styling-page .board-labels {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 22px;
+}
+
+.total-styling-page .board-labels article {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0 24px;
+    border-right: 1px solid var(--line);
+}
+
+.total-styling-page .board-labels article:last-child {
+    border-right: 0;
+}
+
+.total-styling-page .board-labels b {
+    color: var(--rose);
+    font: 400 1.6rem var(--serif);
+}
+
+.total-styling-page .board-labels span {
+    font: 400 12px var(--serif);
+    letter-spacing: .12em;
+    color: var(--rose);
+}
+
+.total-styling-page .board-labels small {
+    display: block;
+    margin-top: 4px;
+    color: var(--muted);
+    font: 300 10px var(--jp);
+    letter-spacing: 0;
+}
+
+.total-styling-page .benefits {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    padding: 70px 6vw;
+}
+
+.total-styling-page .benefits h2 {
+    margin: 0;
+    font: 400 clamp(1.6rem, 2.5vw, 2.7rem)/1.55 var(--serif);
+}
+
+.total-styling-page .benefits ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: transparent;
+}
+
+.total-styling-page .benefits li {
+    padding: 24px 20px;
+    background: var(--paper);
+    font-size: 12px;
+    text-align: center;
+    color: var(--muted);
+}
+
+.total-styling-page .benefits .benefit-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 16px;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    color: var(--rose);
+    display: grid;
+    place-items: center;
+    font-size: 32px;
+    font-weight: 300;
+    font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 40;
+    line-height: 1;
+}
+
+.total-styling-page .consultation {
+    display: grid;
+    container-type: inline-size;
+    grid-template-columns: minmax(0, 0) minmax(0, 100%);
+    overflow: hidden;
+    transition: grid-template-columns 1.6s ease;
+}
+
+.total-styling-page .consultation.is-expanded {
+    grid-template-columns: minmax(0, 50%) minmax(0, 50%);
+}
+
+.total-styling-page .consultation>img {
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 600px;
+    object-position: left center;
+}
+
+.total-styling-page .consultation-copy {
+    padding: 65px 7vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: #fbf7f2;
+}
+
+.total-styling-page .consultation-copy > * {
+    width: calc(50cqw - 14vw);
+    max-width: 100%;
+}
+
+.total-styling-page .consultation-copy h2 {
+    margin: .2rem 0 1.2rem;
+    font: 400 clamp(1.8rem, 2.8vw, 3rem)/1.55 var(--serif);
+}
+
+.total-styling-page .consultation-copy>p:not(.eyebrow, .price) {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* ==================================================
+   original-product.html 固有設定
+   スタイルレシピ、スタイリングボード、効果、個別相談
+   header / footer / hero / CTA / closing / dialog は共通設定を使用
+   ================================================== */
+
+.pairing-studio {
+    padding: 72px 5vw;
+    background: #fff9f3;
+}
+
+.studio-intro {
+    max-width: 700px;
+    margin-bottom: 40px;
+}
+
+.studio-intro h2,
+.seasonal-looks h2 {
+    margin: 0 0 8px;
+    font: 400 clamp(27px, 3vw, 42px) var(--serif)
+}
+
+.studio-intro>p:last-child {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.studio-layout {
+    display: grid;
+    grid-template-columns: 36% 64%;
+    gap: 36px;
+}
+
+.shade-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.shade-option {
+    display: grid;
+    grid-template-columns: 18px 76px 1fr;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 18px;
+    border: 1px solid transparent;
+    background: transparent;
+    text-align: left;
+    cursor: pointer;
+}
+
+.shade-option b,
+.selected-product h3 {
+    display: block;
+    margin: 10px 0 10px;
+    font: 400 13px/1.3 var(--serif);
+    letter-spacing: .09em;
+    color: var(--rose);
+}
+
+.shade-option.is-active {
+    border-color: #dc8c8f;
+    background: #fff6f4;
+}
+
+.shade-option .radio {
+    width: 15px;
+    height: 15px;
+    border: 1px solid #9a8173;
+    border-radius: 50%
+}
+
+.shade-option.is-active .radio {
+    border: 4px solid #fff;
+    outline: 2px solid var(--rose);
+    background: var(--rose);
+}
+
+.shade-option img {
+    height: 88px;
+    margin: auto;
+    object-fit: contain;
+}
+
+.shade-option small {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.selected-pair {
+    display: grid;
+    grid-template-columns: 1fr 30px 1fr;
+    gap: 12px;
+    align-items: start;
+}
+
+.selected-product {
+    display: grid;
+    grid-template-rows: auto 290px auto auto;
+    align-content: start;
+    text-align: center;
+    font: 400 13px/1.3 var(--serif);
+    letter-spacing: .09em;
+    color: var(--muted);
+    margin-bottom: 10px;
+}
+
+.selected-product.is-switching> :not(.product-category) {
+    animation: selected-product-reveal 1200ms cubic-bezier(.22, 1, .36, 1);
+}
+
+@keyframes selected-product-reveal {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .selected-product.is-switching> :not(.product-category) {
+        animation: none;
+    }
+}
+
+.product-category {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.product-category::before,
+.product-category::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+}
+
+.selected-product>img {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    object-fit: contain;
+    filter: drop-shadow(0 18px 20px rgba(70, 40, 25, .13));
+}
+
+.selected-product>p:last-child {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.pair-mark {
+    align-self: center;
+    font: 300 32px var(--serif);
+    color: #b98c79
+}
+
+.finish-note {
+    position: relative;
+    grid-column: 1/4;
+    text-align: center;
+    padding-top: 34px;
+}
+
+.finish-note p {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.seasonal-title {
+    padding: 70px 5vw 0;
+}
+
+.season-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.season-grid article {
+    position: relative;
+    padding: 25px 2vw 70px;
+    background: linear-gradient(var(--paper), #fbede6);
+    text-align: center;
+}
+
+.season-grid article::after {
+    content: "";
+    position: absolute;
+    top: 10%;
+    right: 0;
+    bottom: 15%;
+    width: 1px;
+    background: var(--line);
+}
+
+.season-grid article:last-child::after {
+    display: none;
+}
+
+.season-grid article>div {
+    height: 190px;
+    position: relative
+}
+
+.season-grid img {
+    position: absolute;
+    height: 170px;
+    object-fit: contain;
+    transition: transform .6s ease;
+}
+
+@media (hover: hover) {
+    .season-grid article:hover img {
+        transform: translateY(-8px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .season-grid img {
+        transition: none;
+    }
+
+    .season-grid article:hover img {
+        transform: none;
+    }
+}
+
+.season-grid img:first-child {
+    width: 45%;
+    left: 6%;
+}
+
+.season-grid img:last-child {
+    width: 60%;
+    right: 0;
+}
+
+.season-grid h3 {
+    margin: 12px 0 0;
+    font: 400 20px var(--serif);
+    color: var(--rose);
+}
+
+.season-grid p {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.product-detail {
+    display: grid;
+    grid-template-columns: minmax(0, 100%) minmax(0, 0);
+    height: 470px;
+    align-items: center;
+    overflow: hidden;
+    background: #fff8f1;
+    transition: grid-template-columns 1.6s ease;
+}
+
+.product-detail.is-expanded {
+    grid-template-columns: minmax(0, 50%) minmax(0, 50%);
+}
+
+.product-detail>img {
+    min-width: 0;
+    height: 100%;
+    object-fit: cover;
+}
+
+.detail-text {
+    min-width: 0;
+    padding: 70px 7vw;
+}
+
+.product-detail h2 {
+    font: 400 35px/1.45 var(--serif);
+}
+
+.product-detail p:not(.eyebrow) {
+    max-width: 520px;
+    font-size: 11px;
+    color: var(--muted);
+}
+
+/* ==================================================
+   共通レスポンシブ設定:
+   personal-color.html / makeup-color.html / total-styling.html
+   ================================================== */
+@media(max-width:900px) {
+    .copyright {
+        display: block;
+        width: 100%;
+        text-align: right;
+    }
+
+    main section[id] {
+        scroll-margin-top: 62px;
+    }
+
+    .site-header {
+        height: 62px;
+        padding: 0 5.5vw;
+    }
+
+    .site-header nav {
+        position: fixed;
+        inset: 0;
+        z-index: 25;
+        min-height: 100vh;
+        padding: 6rem 2rem 3rem;
+        background: rgb(247, 241, 235);
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2.1rem;
+        text-align: center;
+        font-size: clamp(.88rem, 3.4vw, 1.12rem);
+        letter-spacing: .08em;
+    }
+
+    .site-header nav.open {
+        display: flex;
+    }
+
+    .site-header nav a::after {
+        display: none;
+    }
+
+    .site-header>.cta {
+        display: none;
+    }
+
+    .menu-button {
+        display: block;
+        z-index: 30;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-copy {
+        padding: 44px 7vw;
+    }
+
+    .hero-media {
+        order: -1;
+        height: 44vh;
+    }
+
+    .hero-media img {
+        min-height: 0;
+        height: 100%;
+    }
+
+    .intro {
+        padding: 60px 7vw;
+    }
+
+    .section {
+        padding: 65px 7vw;
+    }
+
+    .heading-row {
+        display: block;
+    }
+
+    .personal-color-page .split,
+    .personal-color-page .split.is-expanded,
+    .makeup-color-page .lesson,
+    .makeup-color-page .lesson.is-expanded,
+    .about,
+    .about.is-expanded,
+    .makeup-color-page .receive,
+    .makeup-color-page .receive.is-expanded {
+        grid-template-columns: 1fr;
+    }
+
+    .personal-color-page .split>img,
+    .about img {
+        min-height: 0;
+        height: 390px;
+    }
+
+    .personal-color-page .split>img {
+        object-position: center;
+    }
+
+    .about img {
+        height: clamp(260px, 38vw, 340px);
+    }
+
+    .personal-color-page .about-copy {
+        order: 1;
+    }
+
+    .personal-color-page .about>img {
+        order: 2;
+    }
+
+    .personal-color-page .split-copy > *,
+    .personal-color-page .about-copy > * {
+        width: 100%;
+    }
+
+    .seasons {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .two-col {
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    footer {
+        height: auto;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    /* makeup-color.html 専用レスポンシブ設定 */
+    .makeup-color-page .texture,
+    .makeup-color-page .lesson,
+    .makeup-color-page .receive {
+        grid-template-columns: 1fr;
+    }
+
+    .makeup-color-page .texture-copy {
+        order: 1;
+    }
+
+    .makeup-color-page .texture>img {
+        order: 2;
+    }
+
+    .makeup-color-page .receive-copy {
+        order: 1;
+    }
+
+    .makeup-color-page .receive>img {
+        order: 2;
+    }
+
+    .makeup-color-page .lesson-copy > *,
+    .makeup-color-page .receive-copy > * {
+        width: 100%;
+    }
+
+    .makeup-color-page .lesson img,
+    .makeup-color-page .receive img {
+        min-height: 0;
+        height: 390px;
+    }
+
+    .makeup-color-page .texture-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* original-product.html 専用レスポンシブ設定 */
+    .studio-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .shade-list {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .shade-option {
+        grid-template-columns: 15px minmax(0, 1fr);
+        gap: 8px;
+        padding: 10px 6px;
+        text-align: center;
+    }
+
+    .shade-option>span:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .shade-option img {
+        height: 70px;
+    }
+
+    .season-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .season-grid article:nth-child(even)::after {
+        display: none;
+    }
+
+    .product-detail,
+    .product-detail.is-expanded {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .product-detail>img {
+        height: clamp(300px, 50vw, 390px);
+    }
+
+    /* total-styling.html 固有レスポンシブ設定 */
+    .total-styling-page .recipe {
+        padding: 70px 7vw;
+    }
+
+    .total-styling-page .recipe-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px 22px;
+    }
+
+    .total-styling-page .boards,
+    .total-styling-page .benefits,
+    .total-styling-page .consultation,
+    .total-styling-page .consultation.is-expanded {
+        grid-template-columns: 1fr;
+    }
+
+    .total-styling-page .consultation-copy {
+        order: 1;
+    }
+
+    .total-styling-page .consultation-copy > * {
+        width: 100%;
+    }
+
+    .total-styling-page .consultation>img {
+        order: 2;
+    }
+
+    .total-styling-page .boards-copy {
+        padding: 0 0 36px;
+    }
+
+    .total-styling-page .board-labels {
+        grid-column: 1;
+    }
+
+    .total-styling-page .benefits {
+        gap: 34px;
+    }
+
+    .total-styling-page .benefits ul {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .total-styling-page .consultation>img {
+        height: clamp(300px, 45vw, 390px);
+        min-height: 0;
+        object-position: center top;
+    }
+
+    .total-styling-page .consultation-copy {
+        padding: 65px 7vw;
+    }
+}
+
+@media(max-width:520px) {
+    .copyright {
+        text-align: center;
+    }
+
+    .shade-list {
+        grid-template-columns: 1fr;
+    }
+
+    .shade-option {
+        grid-template-columns: 18px 76px 1fr;
+        gap: 16px;
+        padding: 12px 18px;
+        text-align: left;
+    }
+
+    .shade-option>span:last-child {
+        grid-column: auto;
+    }
+
+    .shade-option img {
+        height: 88px;
+    }
+
+    .seasons {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        font-size: 27px;
+    }
+
+    .personal-color-page .split-copy,
+    .about-copy {
+        padding: 55px 7vw;
+    }
+
+    /* makeup-color.html 専用レスポンシブ設定 */
+    .product-category {
+        justify-content: center;
+    }
+    
+    .product-category::before,
+    .product-category::after {
+        display: none;
+    }
+
+    .makeup-color-page .texture-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .makeup-color-page .lesson-copy,
+    .makeup-color-page .receive-copy {
+        padding: 55px 7vw;
+    }
+
+    /* total-styling.html 固有レスポンシブ設定 */
+    .total-styling-page .recipe-grid,
+    .total-styling-page .board-labels,
+    .total-styling-page .benefits ul {
+        grid-template-columns: 1fr;
+    }
+
+    .total-styling-page .recipe-conclusion {
+        width: 100%;
+    }
+
+    .total-styling-page .board-labels {
+        gap: 18px;
+    }
+
+    .total-styling-page .board-labels article {
+        border-right: 0;
+    }
+
+}
+
+@media(max-width:362px) {
+
+    #eye-name {
+        margin-top: 0;
+    }
+}
+
+/* ==================================================
+   共通設定: 予約ダイアログ
+   personal-color.html / makeup-color.html
+   ================================================== */
+dialog {
+    width: min(500px, 90vw);
+    padding: 45px;
+    border: 0;
+    background: var(--paper);
+    box-shadow: 0 28px 90px #34251f55;
+}
+
+dialog::backdrop {
+    background: #30272188;
+    backdrop-filter: blur(5px);
+}
+
+dialog .close {
+    position: absolute;
+    right: 18px;
+    top: 12px;
+    border: 0;
+    background: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+dialog h2 {
+    font: 400 28px var(--jp);
+}
+/* Floating home link */
+.to-home {
+    position: fixed;
+    right: clamp(16px, 2.5vw, 36px);
+    bottom: clamp(16px, 2.5vw, 36px);
+    z-index: 900;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border: 1px solid var(--rose);
+    border-radius: 50%;
+    background: var(--rose);
+    color: var(--paper);
+    font-family: var(--serif);
+    font-size: 10px;
+    letter-spacing: .12em;
+    line-height: 1.35;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(18px);
+    transition:
+        opacity .8s ease,
+        visibility .8s ease,
+        transform .8s ease,
+        background-color .3s ease,
+        color .3s ease;
+}
+
+.to-home.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.to-home:hover,
+.to-home:focus-visible {
+    background: var(--paper);
+    color: var(--rose);
+}
+
+.to-home:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 4px;
+}
+
+@media(max-width:520px) {
+    .to-home {
+        width: 54px;
+        height: 54px;
+        font-size: 9px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .to-home {
+        transition: none;
+    }
+}
+
+dialog h2 {
+    margin-bottom: .65rem;
+}
+
+dialog form > button[type="submit"] {
+    margin-top: .8rem;
+}
+
+/* Fit the complete form in short viewports without an inner scrollbar. */
+@media (max-height: 760px) {
+    dialog { padding: 2rem 2.5rem; }
+    dialog h2 { margin-block: .45rem .5rem; font-size: 1.6rem; }
+    dialog form { gap: .65rem; }
+    dialog input,
+    dialog select { margin-top: .25rem; padding: .55rem .7rem; }
+}
+
+@media (max-height: 600px) {
+    dialog { padding: 1.25rem 2rem; }
+    dialog > .eyebrow { margin-bottom: .25rem; }
+    dialog h2 { margin-block: .2rem .35rem; font-size: 1.35rem; }
+    dialog form { gap: .4rem; }
+    dialog input,
+    dialog select { padding-block: .4rem; }
+}

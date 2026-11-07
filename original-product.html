@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="リップから似合うアイカラーを選べるAtelier ELUNAのオリジナルコスメ。">
+    <title>オリジナル商品｜Atelier ELUNA</title>
+    <link rel="icon" href="img/icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Noto+Sans+JP:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles-personsal-color.css">
+</head>
+
+<body class="pairing-page">
+    <header class="site-header">
+        <a class="brand" href="index.html">
+            <strong>Atelier ELUNA</strong>
+            <small>PERSONAL COLOR SALON</small>
+        </a>
+        <button class="menu-button" type="button" aria-expanded="false" aria-controls="page-nav" aria-label="メニューを開く">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </button>
+        <nav id="page-nav" aria-label="ページ内ナビゲーション">
+            <a href="#studio">カラーを選ぶ</a>
+            <a href="#looks">4シーズン</a>
+        </nav>
+        <button class="cta data-booking" href="#">サロンで試す<span>→</span></button>
+    </header>
+
+    <div class="crumb">
+        <a href="index.html">ホーム</a>　›　<a href="index.html#product">オリジナル商品</a>
+    </div>
+
+    <main>
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">ORIGINAL PRODUCTS</p>
+                <h1>オリジナル商品</h1>
+                <p>ひと塗りのリップから広がる、あなた色のカラーストーリー。
+                    <br>選んだ色に調和するアイパレットをご提案します。
+                </p>
+                <button class="cta data-booking" href="#">サロンで試す<span>→</span></button>
+            </div>
+            <div class="hero-media">
+                <img src="img/product-visual.png" alt="オリジナル商品例">
+            </div>
+        </section>
+
+        <section class="pairing-studio" id="studio">
+            <div class="studio-intro">
+                <div class="reveal">
+                    <p class="eyebrow">COLOR PAIRING STUDIO</p>
+                    <h2>リップから似合う目元を選ぶ</h2>
+                </div>
+                <p>4つのリップから1色を選ぶと、相性のよいアイパレットを表示します。</p>
+            </div>
+            <div class="studio-layout">
+                <div class="shade-list" role="tablist" aria-label="リップカラー">
+                    <button class="shade-option is-active" role="tab" aria-selected="true" data-season="spring">
+                        <span class="radio"></span>
+                        <img src="img/lip1-Photoroom.png" alt="">
+                        <span><b>CORAL PINK</b><small>やさしさと華やかさをまとう</small></span>
+                    </button>
+                    <button class="shade-option" role="tab" aria-selected="false" data-season="summer">
+                        <span class="radio"></span>
+                        <img src="img/lip2-Photoroom.png" alt="">
+                        <span><b>MOUVE BEIGE</b><small>上品で洗練されたニュアンス</small></span>
+                    </button>
+                    <button class="shade-option" role="tab" aria-selected="false" data-season="autumn">
+                        <span class="radio"></span>
+                        <img src="img/lip3-Photoroom.png" alt="">
+                        <span><b>TERRACOTTA BROWN</b><small>深みと温もりのある血色</small></span>
+                    </button>
+                    <button class="shade-option" role="tab" aria-selected="false" data-season="winter">
+                        <span class="radio"></span>
+                        <img src="img/lip4-Photoroom.png" alt="">
+                        <span><b>DEEP BORDEAUX</b><small>凛とした存在感をつくる</small></span>
+                    </button>
+                </div>
+                <div class="selected-pair" aria-live="polite">
+                    <div class="selected-product">
+                        <p class="product-category">LIP COLOR</p>
+                        <img id="selected-lip" src="img/lip1-Photoroom.png" alt="シアーコーラルピンク">
+                        <h3 id="lip-name">CORAL PINK</h3>
+                        <p id="lip-copy">華やかさをまとう透明感のある血色カラー</p>
+                    </div>
+                    <span class="pair-mark">×</span>
+                    <div class="selected-product">
+                        <p class="product-category">EYE PALETTE</p>
+                        <img id="selected-eye" src="img/eyeshadow1-Photoroom.png" alt="Springアイパレット">
+                        <h3 id="eye-name">GARDEN DAYBREAK</h3>
+                        <p id="eye-copy">やさしい血色感と透明感で生き生きとした目元に</p>
+                    </div>
+                    <div class="finish-note">
+                        <p id="finish-copy">みずみずしいツヤのリップに軽やかなグリーンニュアンスを合わせて</p>
+                        <button class="cta data-booking" type="button">サロンで試す<span>→</span></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="seasonal-looks" id="looks">
+            <div class="seasonal-title reveal">
+                <p class="eyebrow">SEASONAL LOOKS</p>
+                <h2>季節のムードで楽しむ、4つのカラーストーリー</h2>
+            </div>
+            <div class="season-grid"></div>
+        </section>
+        <section class="product-detail">
+            <div class="detail-text">
+                <div class="reveal">
+                    <p class="eyebrow">PRODUCT DETAILS</p>
+                    <h2>色と質感が<br>あなたの美しさを引き出す</h2>
+                </div>
+                <p>肌にとけ込むような質感と、洗練されたカラーバリエーション。
+                    <br>毎日のメイクを特別な時間に。</p>
+            </div>
+            <img src="img/product-detail.png" alt="オリジナルリップとアイシャドウ">
+        </section>
+
+        <section class="closing">
+            <p class="eyebrow">SALON CONSULTATION</p>
+            <h2>プロの視点であなただけの色を。</h2>
+            <p>実際の色と質感をサロンでゆっくりお試しいただけます。</p>
+            <button class="cta data-booking">来店予約する<span>→</span></button>
+        </section>
+    </main>
+
+    <footer>
+        <a class="brand" href="index.html">
+            <strong>Atelier ELUNA</strong>
+            <small>PERSONAL COLOR SALON</small>
+        </a>
+        <small class="copyright">© 2026 Atelier ELUNA</small>
+    </footer>
+
+    <dialog id="booking">
+        <button class="close" aria-label="閉じる">×</button>
+        <p class="eyebrow">Reservation</p>
+        <h2>診断を予約する</h2>
+        <form id="booking-form">
+            <label>お名前<input name="name" autocomplete="name" required></label>
+            <label>メールアドレス<input type="email" name="email" autocomplete="email" required></label>
+            <label>ご希望メニュー
+                <select name="menu">
+                    <option>オリジナル商品のお試し</option>
+                    <option>パーソナルカラー診断</option>
+                    <option>メイク＆カラー診断</option>
+                    <option>トータルスタイリング</option>
+                </select>
+            </label>
+            <label>ご希望日<input type="date" name="date" required></label>
+            <button class="button cta data-booking" type="submit">予約リクエストを送る →</button>
+        </form>
+        <div class="form-success" hidden>
+            <h3>ありがとうございます。</h3>
+            <p>予約リクエストを受け付けました。
+                <br>確認メールをお送りします。
+            </p>
+        </div>
+    </dialog>
+    <a class="to-home" href="index.html" aria-label="ホームに戻る" aria-hidden="true">HOME</a>
+    <script src="js/script-personsal-color.js"></script>
+</body>
+
+</html>
